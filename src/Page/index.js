@@ -1,0 +1,5 @@
+export { default as Home} from "./Home"
+export { default as Accessories} from "./Accessories"
+export { default as Feature} from "./Features"
+export { default as Documentation} from "./Documentation"
+export { default as ProductDetail} from "./ProductDetail"
