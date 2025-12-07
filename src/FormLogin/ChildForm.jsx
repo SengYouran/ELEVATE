@@ -1,8 +1,6 @@
-
 import { Link } from "react-router-dom";
 
-function ChildForm({setShowLogin }) {
- 
+function ChildForm({ setShowLogin, setShowRegister }) {
   return (
     <form className="mt-6 mx-8 flex flex-col gap-4 mb-6">
       <div className="flex justify-center items-center">
@@ -17,10 +15,22 @@ function ChildForm({setShowLogin }) {
         <h2 className="text-sm">Unlock Your Favorites Skin Care With Us!</h2>
       </div>
       <div className="flex justify-center items-center gap-4">
-        <button className="w-1/2 py-1 text-xl font-medium border-1 text-center rounded cursor-pointer">
+        <button
+          className="w-1/2 py-1 text-xl font-medium border-1 text-center rounded cursor-pointer"
+          onClick={(e) => {
+            e.preventDefault();
+            setShowRegister(true);
+          }}
+        >
           Login
         </button>
-        <button className="w-1/2 py-[5px] text-xl font-medium bg-black text-white text-center cursor-pointer rounded hover:bg-black">
+        <button
+          className="w-1/2 py-[5px] text-xl font-medium bg-black text-white text-center cursor-pointer rounded hover:bg-black"
+          onClick={(e) => {
+            e.preventDefault();
+            setShowRegister(true);
+          }}
+        >
           Register
         </button>
       </div>

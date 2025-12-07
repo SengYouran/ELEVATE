@@ -29,7 +29,7 @@ function Collection() {
           to={`${render.type}`}
         >
           <img src={render?.img} alt="Women" className="w-[32rem] h-full" />
-          <button className="border w-full h-[2.5rem] text-center font-medium cursor-pointer">
+          <button className="border w-full h-[2.5rem] text-center font-medium cursor-pointer hover:bg-gray-100">
             {render?.text}
           </button>
         </Link>

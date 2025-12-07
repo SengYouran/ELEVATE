@@ -57,7 +57,6 @@ function useLoginRegisterPanel({ setCurrentAccount }) {
       });
       alert("Update to storageUser");
     }
-    console.log(userAccount)
   }
   function handleLogout() {
     localStorage.removeItem("storeCurrentAccount");

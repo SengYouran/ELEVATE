@@ -96,6 +96,7 @@ import Gift_Card from "./UserInfomation/Gift_Card";
 import FAQsGuides from "./UserInfomation/FAQsGuides";
 import Membership_Benifts from "./UserInfomation/Membership_Benifts";
 import Point from "./UserInfomation/Point";
+import ShowSearch from "./Page/ShowSearch";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -109,6 +110,7 @@ const router = createBrowserRouter([
       { path: "men", element: <Men /> },
       { path: "wishlist", element: <Wishlist /> },
       { path: "checkouts", element: <Checkout /> },
+      { path: "search", element: <ShowSearch /> },
       // Women Routes (prefix all with "women-")
       { path: "women-accessories", element: <WomenAccessories /> },
       { path: "women-jackets", element: <Jackets /> },

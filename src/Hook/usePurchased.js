@@ -42,7 +42,7 @@ function usePurchased({ userAccount, setUserAccount, currentAccount, setCounters
     setUserAccount(updateAccount);
     setCounters({});
   }
-
+ 
   return {
     purchasing,
     setPurchasing,

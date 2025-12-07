@@ -4,11 +4,16 @@ import { useNavigate } from "react-router-dom";
 
 function Payment() {
   const [total, setTotal] = useState(null);
-  const [amountPayment, setAmountPayment] = useState(null);
   const [saveMoney, setSaveMoney] = useState(null);
   const [KHRTotal, setKHRTotal] = useState(null);
-  const { userAccount, currentAccount, handleClearBagsStorePurchased } =
-    useDataContext();
+  const {
+    userAccount,
+    currentAccount,
+    handleClearBagsStorePurchased,
+    handleSavePoint,
+    amountPayment,
+    setAmountPayment,
+  } = useDataContext();
   const navigate = useNavigate();
   const delivery = 1.25;
 
@@ -85,6 +90,7 @@ function Payment() {
             alert("Please select payment method and contact method first.");
             return;
           }
+          handleSavePoint();
           handleClearBagsStorePurchased();
           navigate("/");
         }}

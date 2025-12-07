@@ -24,7 +24,7 @@ function useStoreBags({
       setBgLoginRegister(true);
       return;
     }
-    const cartItem = new_array_item?.find((check) => check.id == id);
+    const cartItem = new_array_item?.find((check) => check?.id == id);
     if (!cartItem) return;
     const { product_name, product_price, code, cloth_colors, size, discount } =
       cartItem;
@@ -34,8 +34,7 @@ function useStoreBags({
       alert("Please add counter.");
       return;
     }
-    if (sizes === "") {
-      setAlertSize(true);
+    if (size === "") {
       return;
     }
     const userIndex = userAccount?.findIndex(
@@ -59,7 +58,6 @@ function useStoreBags({
       const oldCart = user?.storeBags || [];
       const existingItemIndex = oldCart.findIndex((check) => check.id === id);
       let newCart;
-
       if (existingItemIndex !== -1) {
         newCart = [...oldCart];
         newCart[existingItemIndex] = updateCart;
@@ -74,7 +72,6 @@ function useStoreBags({
     }
   }
   function handleCounterPlus(id) {
-    console.log(id);
     setCounters((prev) => ({
       ...prev,
       [id]: (prev[id] || 1) + 1,
@@ -82,7 +79,6 @@ function useStoreBags({
   }
 
   function handleCounterDash(id) {
-    console.log(id);
     setCounters((prev) => ({
       ...prev,
       [id]: Math.max((prev[id] || 1) - 1, 0),

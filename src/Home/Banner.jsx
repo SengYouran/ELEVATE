@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import test from "../assets/Banner/test.jpg";
-import test2 from "../assets/Banner/90.jpg";
+import test from "../assets/Banner/45.png";
+import test2 from "../assets/Banner/35.png";
 
 const banner = [test, test2];
 

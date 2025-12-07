@@ -16,17 +16,17 @@ function BothForm() {
   return (
     <div
       className={`transition-all duration-400 ease-in-out relative -z-50 opacity-0 ${
-        showLogin ? "z-70 opacity-100 " : ""
+        showLogin ? "z-90 opacity-100 " : ""
       }`}
     >
       <div
-        className="container_bothFrom fixed bg-white w-[400px] md:w-[500px] h-[100vh] top-1/2 left-1/2 transform -translate-1/2 overflow-y-auto
+        className="container_bothFrom fixed bg-white w-[340px] mt-4 sm:w-[400px] md:w-[500px] h-[100vh] top-1/2 left-1/2 transform -translate-1/2 overflow-y-auto
      rounded-sm z-10"
       >
-        <ChildForm setShowLogin={setShowLogin} />
+        <ChildForm setShowLogin={setShowLogin} setShowRegister={setShowRegister}/>
       </div>
       <div
-        className={`container_bothFrom fixed w-[400px] h-[100vh] -z-30 bg-white top-1/2 left-1/2 transform -translate-1/2 overflow-y-auto px-8 
+        className={`container_bothFrom fixed w-[340px] mt-4 sm:w-[400px] md:w-[500px] h-[100vh] -z-30 bg-white top-1/2 left-1/2 transform -translate-1/2 overflow-y-auto px-8 
           ${showRegister ? " z-75" : ""}`}
       >
         <div className="float-right mx-4 mt-2">
@@ -65,7 +65,7 @@ function BothForm() {
         </span>
       </div>
       <div
-        className={`bg-gray-200 fixed inset-0 opacity-70 z-70 ${
+        className={`bg-black fixed inset-0 opacity-30 z-70 ${
           bgLoginRegister ? "block" : "hidden"
         }`}
         onClick={() => {

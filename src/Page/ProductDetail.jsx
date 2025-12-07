@@ -26,7 +26,6 @@ export default function ProductDetail() {
     new_array_item,
     setBgLoginRegister,
     sizes,
-    bgCarts,
     setBgCarts,
     setShowCart,gotoBag, setGoToBag
   } = useDataContext();

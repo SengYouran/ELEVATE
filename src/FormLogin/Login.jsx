@@ -20,6 +20,8 @@ function Login({ isLogin, setIsLogin }) {
       setCurrentAccount(checkLogin);
       setShowLogin(false);
       navigator("/");
+    } else {
+      setIsError(true);
     }
   }
   const onlyNumbers = (value) => {
@@ -75,7 +77,6 @@ function Login({ isLogin, setIsLogin }) {
       <button
         className=" w-full h-[35px] bg-black text-white hover:bg-black cursor-pointer rounded mt-2"
         type="submit"
-        onClick={() => setIsError(true)}
       >
         LOGIN
       </button>

@@ -4,11 +4,18 @@ import { useDataContext } from "../Context";
 import useInViewAnimation from "../Hook/useInViewAnimation.js";
 const makeSlug = (name) => name.toLowerCase().replace(/\s+/g, "-");
 function Wishlist() {
-  const { handleWishlist, userAccount, currentAccount, handleCart } =
-    useDataContext();
+  const {
+    handleWishlist,
+    userAccount,
+    currentAccount,
+    handleCart,
+    setSize,
+    sizes,
+  } = useDataContext();
   const [currentWishlist, setCurrentWish] = useState([]);
   const productRefs = useInViewAnimation("active", 200, [currentWishlist]);
-
+  const [showSize, setShowSize] = useState(false);
+  const [currentSize, setCurrentSize] = useState(null);
   useEffect(() => {
     const userIndex = userAccount?.find(
       (check) => check?.id === currentAccount?.id
@@ -99,7 +106,39 @@ function Wishlist() {
                       {item?.product_name}
                     </h2>
                   </div>
-
+                  <div className="relative">
+                    <div
+                      className={`bg-gray-100 my-1 w-18 p-1 border cursor-pointer flex justify-center items-center gap-2`}
+                      onClick={() => {
+                        setSize(item?.size[0]);
+                        setShowSize(true);
+                      }}
+                    >
+                      <i className="fa-solid fa-angle-down text-sm "></i>
+                      <h2 className="font-medium text-[15px]">
+                        {currentSize === null ? item?.size[0] : currentSize}
+                      </h2>
+                    </div>
+                    <div
+                      className={`container-scroll absolute bottom-0 left-18 bg-gray-100 w-14 shadow overflow-y-auto max-h-[12rem] ${
+                        showSize ? "block" : "hidden"
+                      }`}
+                    >
+                      {item?.size.map((render) => (
+                        <div
+                          className="border p-2 cursor-pointer"
+                          onClick={() => {
+                            setSize(render);
+                            setShowSize(false);
+                            setCurrentSize(render);
+                          }}
+                          key={render}
+                        >
+                          <h2 className="text-center">{render}</h2>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                   <div className="flex items-center gap-2">
                     <h2
                       className="bg-red-500 p-1 text-white text-[14px] cursor-pointer"
@@ -112,7 +151,13 @@ function Wishlist() {
                     <h2
                       onClick={() => {
                         handleWishlist(item?.id);
-                        handleCart(item?.id);
+
+                        const sizeToSet = currentSize || item?.size[0];
+                        if (sizeToSet) {
+                          setSize(sizeToSet);
+
+                          handleCart(item?.id);
+                        }
                       }}
                       className="bg-green-500 p-1 text-white text-[14px] cursor-pointer"
                     >

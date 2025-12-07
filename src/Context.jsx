@@ -6,6 +6,8 @@ import { useWishlist } from "./Hook/useWishlist.js";
 import { useStoreBags } from "./Hook/useStoreBags.js";
 import { usePurchased } from "./Hook/usePurchased.js";
 import { useCheckouts } from "./Hook/useCheckouts.js";
+import { useSearch } from "./Hook/useSearch.js";
+import { usePoints } from "./Hook/usePoints.js";
 const ControlDataContext = createContext();
 const useDataContext = () => useContext(ControlDataContext);
 function ContextProvider({ children }) {
@@ -15,6 +17,8 @@ function ContextProvider({ children }) {
   const [policy, setPolicy] = useState(false);
   const [faqguides, setFaqGuides] = useState(false);
   const [bgCarts, setBgCarts] = useState(false);
+  const [showDataSearch, setShowDataSearch] = useState([]);
+  const [amountPayment, setAmountPayment] = useState(null);
   const [userAccount, setUserAccount] = useState(() => {
     try {
       const stored = localStorage.getItem("UserAccount");
@@ -59,7 +63,9 @@ function ContextProvider({ children }) {
     handleChange,
     selectProvince,
     setSelectProvince,
-    handleLogout,showLogins, setShowLogins
+    handleLogout,
+    showLogins,
+    setShowLogins,
   } = useLoginRegisterPanel({ setCurrentAccount });
   const { handleWishlist, wishlistActive, wishlistSD } = useWishlist({
     currentAccount,
@@ -99,7 +105,9 @@ function ContextProvider({ children }) {
     detail,
     setDetail,
     showHidden,
-    setShowHidden,activeLinkAcc, setActiveLinkAcc
+    setShowHidden,
+    activeLinkAcc,
+    setActiveLinkAcc,
   } = usePurchased({
     userAccount,
     setUserAccount,
@@ -115,7 +123,18 @@ function ContextProvider({ children }) {
     handleBanks,
     handleContact,
   } = useCheckouts({ currentAccount, setUserAccount, userAccount });
-
+  const {
+    handleSubmit,
+    handleSearchValue,
+    valueSearch,
+    setValueSearch,
+    currentValue,
+  } = useSearch({ setSearch, setShowDataSearch, new_array_item });
+  const {
+    userPoints, // list of points history
+    pointHistory, // newly added history inside this session
+    handleSavePoint,
+  } = usePoints({ currentAccount, setUserAccount, userAccount,amountPayment });
   return (
     <ControlDataContext.Provider
       value={{
@@ -176,7 +195,22 @@ function ContextProvider({ children }) {
         policy,
         setPolicy,
         faqguides,
-        setFaqGuides,activeLinkAcc, setActiveLinkAcc,showLogins, setShowLogins
+        setFaqGuides,
+        activeLinkAcc,
+        setActiveLinkAcc,
+        showLogins,
+        setShowLogins,
+        showDataSearch,
+        setShowDataSearch,
+        handleSubmit,
+        handleSearchValue,
+        valueSearch,
+        setValueSearch,
+        navigator,
+        currentValue,
+        userPoints,
+        pointHistory,
+        handleSavePoint,amountPayment, setAmountPayment
       }}
     >
       {children}

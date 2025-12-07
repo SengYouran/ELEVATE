@@ -12,7 +12,7 @@ function Small() {
   return (
     <React.Fragment>
       <header className="bg-white px-6 py-2 w-screen fixed z-80 top-0 left-0 flex md:hidden justify-between items-center">
-        <Link className="flex items-center gap-3">
+        <Link to={"/"} className="flex items-center gap-3">
           <i
             className="fa-solid fa-bars text-2xl cursor-pointer"
             onClick={() => setShowBars(true)}
@@ -21,7 +21,7 @@ function Small() {
         </Link>
         <div className="flex items-center gap-2">
           <i
-            className="fa-solid fa-magnifying-glass text-2xl"
+            className="fa-solid fa-magnifying-glass text-2xl cursor-pointer"
             onClick={() => setSearch(true)}
           ></i>
           <div className="border border-black w-[1.5px] h-[1.5rem]"></div>

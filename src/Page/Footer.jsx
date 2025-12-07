@@ -8,7 +8,7 @@ import { useDataContext } from "../Context";
 
 function Footer() {
   const navigator = useNavigate();
-  const { setPolicy } = useDataContext();
+  const { setPolicy, handleLogout } = useDataContext();
   return (
     <React.Fragment>
       <div className="bg-gray-900 py-4 px-4 sm:px-34 mt-4">
@@ -18,6 +18,7 @@ function Footer() {
           </h2>
           <h2
             onClick={() => {
+              handleLogout();
               navigator("/");
             }}
             className="cursor-pointer text-white text-sm border border-gray-400 py-2 px-4 rounded-4xl hover:bg-amber-50 hover:text-black"

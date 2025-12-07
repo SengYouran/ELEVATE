@@ -20,7 +20,6 @@ function Cart() {
     moreCounter,
     handleRenewCounter,
     delivery,
-    originalSizes,
     handleResize,
   } = useCart();
   return (
@@ -165,7 +164,9 @@ function Cart() {
                           >
                             <h2 className="text-sm ">Size</h2>
                             <span className="border flex items-center gap-1 p-0.5 rounded cursor-pointer">
-                              <p className="text-sm font-medium">{sizes}</p>
+                              <p className="text-sm font-medium">
+                                {sizes === "" ? size[0] : sizes}
+                              </p>
                               <i className="fa-solid fa-chevron-down text-sm "></i>
                             </span>
                           </span>

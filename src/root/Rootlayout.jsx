@@ -9,6 +9,8 @@ import { useDataContext } from "../Context";
 import BothForm from "../FormLogin/BothForm";
 import Cart from "../Items/Cart";
 import PrivacyPolicy from "../AboutCompany/PrivacyPolicy";
+import ToTop from "../Page/ToTop";
+
 function Rootlayout() {
   const {
     showLogin,
@@ -19,6 +21,7 @@ function Rootlayout() {
     gotoBag,
     setGoToBag,
   } = useDataContext();
+
   return (
     <React.Fragment>
       <Scroll />
@@ -26,31 +29,41 @@ function Rootlayout() {
         <Large />
         <Small />
       </header>
-      <div
-        className={`bg-gray-200 fixed inset-0 z-60 opacity-70 ${
-          showLogin ? "block" : "hidden"
-        }`}
-        onClick={() => setShowLogin(false)}
-      />
-      <div
-        className={`bg-black fixed inset-0 transition-all ease-in-out ${
-          bgCarts
-            ? "z-80 opacity-30 duration-500"
-            : "-z-80 opacity-0 duration-0"
-        }`}
-        onClick={() => {
-          setGoToBag(false);
-          setBgCarts(false);
-          setShowCart(false);
-        }}
-      ></div>
+
+      {/* Login Overlay */}
+      {showLogin && (
+        <div
+          className="bg-black fixed inset-0 z-60 opacity-30"
+          onClick={() => setShowLogin(false)}
+        />
+      )}
+
+      {/* Cart Overlay */}
+      {bgCarts && (
+        <div
+          className="bg-black fixed inset-0 z-80 opacity-30 transition duration-500"
+          onClick={() => {
+            setGoToBag(false);
+            setBgCarts(false);
+            setShowCart(false);
+          }}
+        />
+      )}
+
+      {/* Modals */}
       <BothForm />
-      <Search />
       <Cart />
       <PrivacyPolicy />
+      <ToTop />
+
+      {/* Search Overlay */}
+      <Search />
+
+      {/* Main Content */}
       <main className="mt-5 md:mt-20">
         <Outlet />
       </main>
+
       <Footer />
     </React.Fragment>
   );

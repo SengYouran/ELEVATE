@@ -120,7 +120,35 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .custom-animation {
   animation: jumpFlicker 1s ease-in-out infinite;
 }
+.custom-anime {
+  animation: top_top .8s ease-in-out infinite;
+  margin-top: -2px;
+}
+.custom-dots {
+  animation: top_bottom 1s ease-in-out infinite;
+}
+.custom-hiddenPopUp {
+  animation: hiddenPopUp .8s ease-in-out infinite;
+}
+@keyframes hiddenPopUp {
+  0% {
+    opacity: .8;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes top_bottom {
+  0% {
+    transform: translateY(0px);
+    opacity: 0;
+  }
 
+  100% {
+    transform: translateY(-3px);
+    opacity: .8;
+  }
+}
 @keyframes jumpFlicker {
   0% {
     transform: translateY(0) scale(1);
@@ -141,6 +169,17 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   100% {
     transform: translateY(0) scale(1);
     opacity: 1;
+  }
+}
+@keyframes top_top {
+  0% {
+    transform: translateY(3px);
+    opacity: .3;
+  }
+  
+  100% {
+    transform: translateY(-3px);
+    opacity: .8;
   }
 }
 

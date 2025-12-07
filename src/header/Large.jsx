@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Logo_shop from "../assets/Banner/LogoShop.png";
 import cart_bag from "../assets/Banner/cart.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { men, women } from "../Data/link";
 import { useDataContext } from "../Context";
 import ShowLogin from "./ShowLogin";
 import ShowProfile from "./ShowProfile";
 function Large() {
   const [hoverMenu, setHoverMenu] = useState(null); // "men" | "women" | null
+  const navigator = useNavigate();
   const {
     userAccount,
     currentAccount,
@@ -19,6 +20,10 @@ function Large() {
     setBgCarts,
     showLogins,
     setShowLogins,
+    handleLogout,
+    handleSubmit,
+    valueSearch,
+    setValueSearch,
   } = useDataContext();
   const [currentCounter, setCurrentCounter] = useState(0);
   useEffect(() => {
@@ -32,6 +37,10 @@ function Large() {
     });
     setCurrentCounter(newCounter);
   }, [userAccount, currentAccount]);
+  function handleSearch(e) {
+    handleSubmit(e);
+    navigator("/search");
+  }
   return (
     <React.Fragment>
       <header className="hidden md:flex flex-col fixed top-0 left-0 z-50 w-screen bg-white px-6 py-1 shadow">
@@ -44,13 +53,17 @@ function Large() {
             ></i>
             <div className="border bg-black w-[1px] h-6"></div>
             <div>
-              <form className="flex items-center">
+              <form onSubmit={handleSearch} className="flex items-center">
                 <input
                   className="outline-0"
                   type="text"
+                  value={valueSearch}
+                  onChange={(e) => setValueSearch(e.target.value)}
                   placeholder="What's your..."
                 />
-                <h2 className="cursor-pointer text-gray-300">Search</h2>
+                <button type="submit" className="cursor-pointer text-gray-300">
+                  Search
+                </button>
               </form>
               <div className="border-b"></div>
             </div>
@@ -210,30 +223,29 @@ function Large() {
 
       {!currentAccount?.id || currentAccount?.id === 0 ? (
         <div
-  className={[
-    "transition-all duration-500 ease-in-out transform",
-    "fixed right-3 w-[90%] max-w-[25rem]",
-    "top-[3.5rem] md:top-[5.8rem] md:left-5", // Keep fixed always!
-    "origin-top-right md:origin-top-left",
-    "bg-[#1a1a1aee] backdrop-blur-md rounded-lg shadow-xl",
+          className={[
+            "transition-all duration-500 ease-in-out transform",
+            "fixed right-3 w-[90%] max-w-[25rem]",
+            "top-[3.5rem] md:top-[5.8rem] md:left-5", // Keep fixed always!
+            "origin-top-right md:origin-top-left",
+            "bg-[#1a1a1aee] backdrop-blur-md rounded-lg shadow-xl",
 
-    showLogins
-      ? "scale-100 opacity-100 translate-x-0 translate-y-0 z-50"
-      : "scale-0 opacity-0 translate-x-20 -translate-y-20 z-0",
+            showLogins
+              ? "scale-100 opacity-100 translate-x-0 translate-y-0 z-50"
+              : "scale-0 opacity-0 translate-x-20 -translate-y-20 z-0",
 
-    showLogins
-      ? "md:scale-100 md:opacity-100 md:translate-x-0 md:translate-y-0"
-      : "md:scale-0 md:opacity-0 md:-translate-x-20 md:-translate-y-40",
-  ].join(" ")}
->
-  <ShowLogin
-    setShowLogin={setShowLogin}
-    setShowRegister={setShowRegister}
-    setBgLoginRegister={setBgLoginRegister}
-    setShowLogins={setShowLogins}
-  />
-</div>
-
+            showLogins
+              ? "md:scale-100 md:opacity-100 md:translate-x-0 md:translate-y-0"
+              : "md:scale-0 md:opacity-0 md:-translate-x-20 md:-translate-y-40",
+          ].join(" ")}
+        >
+          <ShowLogin
+            setShowLogin={setShowLogin}
+            setShowRegister={setShowRegister}
+            setBgLoginRegister={setBgLoginRegister}
+            setShowLogins={setShowLogins}
+          />
+        </div>
       ) : (
         <div
           className={`
@@ -255,7 +267,7 @@ function Large() {
   `}
           onMouseLeave={() => setShowLogins(!showLogins)}
         >
-          <ShowProfile currentAccount={currentAccount} />
+          <ShowProfile currentAccount={currentAccount} handleLogout={handleLogout} />
         </div>
       )}
       {hoverMenu === "men" || hoverMenu === "women" ? (

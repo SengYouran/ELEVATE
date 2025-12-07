@@ -55,7 +55,7 @@ function useWishlist({
     setWishlistActive(toggleActive);
     const user = userAccount[userIndex];
     const wishlist = user?.saveWishlist || [];
-    const isExit = wishlist.some((e) => e.id === id);
+    const isExit = wishlist.some((e) => e?.id === id);
     const updateWishlist = isExit
       ? wishlist?.filter((check) => check?.id !== id)
       : [data, ...wishlist];
