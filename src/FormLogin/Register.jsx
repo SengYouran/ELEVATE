@@ -243,7 +243,7 @@ function Register({ setIsLogin }) {
             ></i>
           </span>
           <h2
-            className="bg-black text-white text-center w-full h-[35px] text-[18px] pt-1 cursor-pointer hover:bg-pink-600 rounded"
+            className="bg-black text-white text-center w-full h-[35px] text-[18px] pt-1 cursor-pointer hover:black rounded"
             onClick={() => {
               if (handleMatchPassword()) {
                 handleCreateAccount(userAccount, setUserAccount, password2);

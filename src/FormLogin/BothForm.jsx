@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import ChildForm from "./ChildForm";
 import Register from "./Register";
 import { useDataContext } from "../Context";
@@ -20,13 +20,17 @@ function BothForm() {
       }`}
     >
       <div
-        className="container_bothFrom fixed bg-white w-[340px] mt-4 sm:w-[400px] md:w-[500px] h-[100vh] top-1/2 left-1/2 transform -translate-1/2 overflow-y-auto
+        className="container_bothFrom fixed bg-white w-[360px] mt-4 ms:w-[400px] md:w-[500px] h-[100vh] top-1/2 left-1/2 transform -translate-1/2 overflow-y-auto
      rounded-sm z-10"
       >
-        <ChildForm setShowLogin={setShowLogin} setShowRegister={setShowRegister}/>
+        <ChildForm
+          setShowLogin={setShowLogin}
+          setShowRegister={setShowRegister}
+          setBgLoginRegister={setBgLoginRegister}
+        />
       </div>
       <div
-        className={`container_bothFrom fixed w-[340px] mt-4 sm:w-[400px] md:w-[500px] h-[100vh] -z-30 bg-white top-1/2 left-1/2 transform -translate-1/2 overflow-y-auto px-8 
+        className={`container_bothFrom fixed w-[340px] mt-4 sm:w-[400px] md:w-[450px] h-[100vh] -z-30 bg-white top-1/2 left-1/2 transform -translate-1/2 overflow-y-auto px-8 
           ${showRegister ? " z-75" : ""}`}
       >
         <div className="float-right mx-4 mt-2">

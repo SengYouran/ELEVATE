@@ -10,7 +10,7 @@ function Smart_Vibes({handleWishlist, currentWishlistActive}) {
     <div className="flex flex-col gap-2">
       <h2 className="text-2xl font-bold">Smart Looks, Easy Vibes 💼</h2>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-4">
         {product_Smart.map((item, index) => {
           const slug = makeSlug(`${item?.product_name}-${item?.code}`);
           const price = parseFloat(item.product_price.replace("$", "")) || 0;
@@ -41,7 +41,7 @@ function Smart_Vibes({handleWishlist, currentWishlistActive}) {
                 <img
                   src={firstColor.product_image[hover[item.id] || 1]}
                   alt="Product item"
-                  className="w-auto h-[15rem] md:h-[20rem] transition-all duration-150 ease-in"
+                  className="w-full h-[15rem] md:h-[20rem] transition-all duration-150 ease-in"
                 />
               </Link>
 

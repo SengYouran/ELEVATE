@@ -1,5 +1,4 @@
 function GoToBags({ newArr, gotoBag, setGoToBag, setShowCart }) {
-  console.log(gotoBag);
   return (
     <div
       className={` bg-white fixed bottom-0 left-0 w-screen transition-all duration-500 ease-in-out  flex justify-center items-center gap-4 ${

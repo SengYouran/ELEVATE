@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Logo_shop from "../assets/Banner/LogoShop.png";
 import cart_bag from "../assets/Banner/shopping bag.png";
 import { men, women } from "../Data/link";
@@ -8,7 +8,29 @@ function Small() {
   const [showItem, setShowItem] = useState(null);
   const [gender, setGender] = useState("men");
   const [showbars, setShowBars] = useState(false);
-  const { setSearch, showLogins, setShowLogins, setBgCart,setBgCarts,setShowCart } = useDataContext();
+  const {
+    setSearch,
+    showLogins,
+    setShowLogins,
+    currentAccount,
+    userAccount,
+    setBgCart,
+    setBgCarts,
+    setShowCart,
+  } = useDataContext();
+  const [currentCounter, setCurrentCounter] = useState(0);
+  useEffect(() => {
+    const userIndex = userAccount?.find(
+      (check) => check.id === currentAccount.id
+    );
+    const storeBag = userIndex?.storeBags || [];
+    let newCounter = 0;
+    storeBag.forEach((add) => {
+      newCounter += add?.counter;
+    });
+    setCurrentCounter(newCounter);
+  }, [userAccount, currentAccount]);
+
   return (
     <React.Fragment>
       <header className="bg-white px-6 py-2 w-screen fixed z-80 top-0 left-0 flex md:hidden justify-between items-center">
@@ -38,8 +60,8 @@ function Small() {
             }}
           >
             <img src={cart_bag} alt="StoreBags" className="w-[30px] h-6" />
-            <h2 className="text-[17px] text-red-600 font-bold absolute top-[2px] left-2.5">
-              0
+            <h2 className="text-[15px] text-red-600 font-bold absolute top-[60%] left-1/2 -translate-y-1/2 -translate-x-1/2">
+              {currentCounter}
             </h2>
           </span>
           <div className="border border-black w-[1.5px] h-[1.5rem]"></div>

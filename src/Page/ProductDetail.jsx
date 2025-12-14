@@ -12,7 +12,6 @@ export default function ProductDetail() {
   const [size, setSizes] = useState(null);
   const [similar, setSimilar] = useState([]);
   const [alertSize, setAlertSize] = useState(false);
-  
 
   const {
     handleCart,
@@ -27,7 +26,9 @@ export default function ProductDetail() {
     setBgLoginRegister,
     sizes,
     setBgCarts,
-    setShowCart,gotoBag, setGoToBag
+    setShowCart,
+    gotoBag,
+    setGoToBag,
   } = useDataContext();
   // -------------------------
   // LOAD PRODUCT DETAIL
@@ -277,19 +278,19 @@ export default function ProductDetail() {
           <div
             className="bg-black hover:bg-gray-800 h-[3rem] cursor-pointer flex items-center justify-center"
             onClick={() => {
-              if (!currentAccount) {
+              if (currentAccount == 0) {
                 setShowLogin(true);
                 setShowRegister(true);
                 setBgLoginRegister(true);
-                return;
+              } else {
+                setGoToBag(true);
+                setBgCarts(true);
+                handleCart(newArr?.id);
               }
               if (sizes === "") {
                 setAlertSize(true);
                 return;
               }
-              setGoToBag(true);
-              setBgCarts(true);
-              handleCart(newArr?.id);
             }}
           >
             <h2 className="text-center text-white font-medium ">Add to bag</h2>

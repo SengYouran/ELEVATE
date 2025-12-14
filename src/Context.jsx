@@ -44,6 +44,7 @@ function ContextProvider({ children }) {
       return {};
     }
   });
+  console.log(currentAccount);
   // Save userAccount changes to localStorage
   useEffect(() => {
     localStorage.setItem("UserAccount", JSON.stringify(userAccount));
@@ -134,7 +135,7 @@ function ContextProvider({ children }) {
     userPoints, // list of points history
     pointHistory, // newly added history inside this session
     handleSavePoint,
-  } = usePoints({ currentAccount, setUserAccount, userAccount,amountPayment });
+  } = usePoints({ currentAccount, setUserAccount, userAccount, amountPayment });
   return (
     <ControlDataContext.Provider
       value={{
@@ -210,7 +211,9 @@ function ContextProvider({ children }) {
         currentValue,
         userPoints,
         pointHistory,
-        handleSavePoint,amountPayment, setAmountPayment
+        handleSavePoint,
+        amountPayment,
+        setAmountPayment,
       }}
     >
       {children}

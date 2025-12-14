@@ -24,7 +24,7 @@ function ToTop() {
     <React.Fragment>
       {show && (
         <div
-          className="fixed bottom-20 right-6 z-80 flex flex-col justify-center items-center cursor-pointer"
+          className="fixed bottom-20 right-6 z-70 flex flex-col justify-center items-center cursor-pointer"
           onClick={Scroll}
         >
           <div className="flex flex-col">

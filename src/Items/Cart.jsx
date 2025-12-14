@@ -24,10 +24,10 @@ function Cart() {
   } = useCart();
   return (
     <div
-      className={`fixed top-0 right-0 w-full md:w-[30rem] h-screen bg-white transition-all duration-500 ease-in-out
+      className={`fixed top-0 right-0 z-80 w-full md:w-[30rem] h-screen bg-white transition-all duration-500 ease-in-out
        ${
          showCart
-           ? "z-80 opacity-100 transform translate-x-0 "
+           ? "opacity-100 transform translate-x-0 "
            : " translate-x-full -z-80 opacity-0 "
        }`}
     >
@@ -134,7 +134,7 @@ function Cart() {
                       <div className="flex flex-col justify-center gap-2 ">
                         <span className="">
                           <img
-                            className="w-40"
+                            className="w-30 md:w-40"
                             src={cloth_colors?.[0]?.product_image?.[1]}
                             alt="Product Picture"
                           />
@@ -262,7 +262,7 @@ function Cart() {
                         ></div>
                       </div>
                     </div>
-                    <div className="flex flex-col gap-2 absolute top-20 md:top-30 right-0 text-right">
+                    <div className="flex flex-col gap-2 absolute top-25 md:top-30 right-0 text-right">
                       {discountRate != 0 ? (
                         <>
                           <h2 className="text-sm">

@@ -9,7 +9,7 @@ function Vibes({handleWishlist, currentWishlistActive}) {
     <div className="flex flex-col gap-2 mt-4">
       <h2 className="text-2xl font-bold">Back to Business Vibes 👔</h2>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-4">
         {product_Home.map((item, index) => {
           const slug = makeSlug(`${item?.product_name}-${item?.code}`);
           const price = parseFloat(item.product_price.replace("$", "")) || 0;
@@ -34,7 +34,7 @@ function Vibes({handleWishlist, currentWishlistActive}) {
                     src={color.product_image[1]}
                     alt="Product items"
                     key={color.color}
-                    className="w-auto h-[15rem] md:h-[20rem]"
+                    className="w-full h-[15rem] md:h-[20rem]"
                   />
                 </Link>
               ))}
