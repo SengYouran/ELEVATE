@@ -45,7 +45,7 @@ function Footer() {
             <h2 className="text-[17px] text-white ">Customer Services</h2>
             <div className="border border-white w-15"></div>
             <Link
-              to={"/account/faqguides"}
+              to={"faqguides"}
               className="text-[13px] text-gray-100 cursor-pointer"
             >
               Online exchange policy
@@ -57,7 +57,7 @@ function Footer() {
               Privacy Policy
             </p>
             <Link
-              to={"/account/faqguides"}
+              to={"faqguides"}
               className="text-[13px] text-gray-100 cursor-pointer"
             >
               FAQs & Guides

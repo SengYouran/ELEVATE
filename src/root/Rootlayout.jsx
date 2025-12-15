@@ -10,7 +10,7 @@ import BothForm from "../FormLogin/BothForm";
 import Cart from "../Items/Cart";
 import PrivacyPolicy from "../AboutCompany/PrivacyPolicy";
 import ToTop from "../Page/ToTop";
-
+import Snow from "../Items/Snow";
 function Rootlayout() {
   const {
     showLogin,
@@ -58,7 +58,8 @@ function Rootlayout() {
 
       {/* Search Overlay */}
       <Search />
-
+      {/**Session */}
+      <Snow />
       {/* Main Content */}
       <main className="mt-5 md:mt-20">
         <Outlet />

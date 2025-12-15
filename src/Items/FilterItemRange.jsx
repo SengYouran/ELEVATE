@@ -9,7 +9,7 @@ function FilterItemRange({
 }) {
   return (
     <div
-      className={`fixed top-0 right-0 z-100 w-[30rem] h-[100vh] bg-white py-2 px-4 flex flex-col gap-4 transform transition-all duration-500 ease-in-out ${
+      className={`fixed top-0 right-0 z-100 w-[20rem] sm:w-[30rem] h-[100vh] bg-white py-2 px-4 flex flex-col gap-4 transform transition-all duration-500 ease-in-out ${
         close ? "translate-x-0" : "translate-x-[30rem]"
       }`}
     >

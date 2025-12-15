@@ -99,7 +99,7 @@ function Banner() {
             <img
               src={src}
               alt={`Banner ${i}`}
-              className={`w-full h-full ${reset === 0 ? "ml-2.5" : ""}`}
+              className={`w-full h-full ${reset === 0 ? "sm:ml-2.5" : ""}`}
             />
           </span>
         ))}

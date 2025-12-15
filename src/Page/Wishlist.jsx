@@ -37,14 +37,14 @@ function Wishlist() {
           <div className="flex justify-center items-center gap-3">
             <Link
               to="/women"
-              className="px-8 py-3 bg-black text-white text-lg rounded-full hover:bg-gray-800 transition inline-block"
+              className="px-4 py-3 bg-black text-white text-lg rounded-full hover:bg-gray-800 transition inline-block"
             >
               Shop Women
             </Link>
 
             <Link
               to="/men"
-              className="px-8 py-3 bg-black text-white text-lg rounded-full hover:bg-gray-800 transition inline-block"
+              className="px-4 py-3 bg-black text-white text-lg rounded-full hover:bg-gray-800 transition inline-block"
             >
               Shop Men
             </Link>
