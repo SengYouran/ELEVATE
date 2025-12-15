@@ -97,7 +97,7 @@ import FAQsGuides from "./UserInfomation/FAQsGuides";
 import Membership_Benifts from "./UserInfomation/Membership_Benifts";
 import Point from "./UserInfomation/Point";
 import ShowSearch from "./Page/ShowSearch";
-import About_us from "./AboutCompany/About-us";
+import About_us from "./AboutCompany/About_us";
 const router = createBrowserRouter([
   {
     path: "/",
