@@ -41,10 +41,9 @@ function useWishlist({
     }
   }, [wishlistSD, wishlistActive]);
   function handleWishlist(code) {
-    console.log(code);
     if (!code) return;
 
-    if (currentAccount?.id === 0) {
+    if (currentAccount == 0) {
       setShowLogin(true);
       setShowRegister(true);
       setBgLoginRegister(true);

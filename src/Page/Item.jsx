@@ -262,7 +262,7 @@ export default function Item() {
           </div>
         </div>
       ) : (
-        <div className="mt-[4rem] sm:mt-[10rem] sm:mb-[2rem]">
+        <div className="flex justify-center items-center sm:mt-[10rem] sm:mb-[2rem]">
           <h2 className="text-center text-2xl font-bold">
             Aww ..Snap. No result were found for {currentValue}
           </h2>
