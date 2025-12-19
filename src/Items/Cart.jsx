@@ -142,7 +142,7 @@ function Cart() {
                         <span
                           className="flex items-center gap-2 cursor-pointer"
                           onClick={() => {
-                            handleWishlist(id);
+                            handleWishlist(code);
                             handleDeleteCart(id);
                           }}
                         >

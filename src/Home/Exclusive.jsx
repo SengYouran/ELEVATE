@@ -67,10 +67,10 @@ function Exclusive({ handleWishlist, currentWishlistActive }) {
                   </div>
                   <span
                     onClick={() => {
-                      handleWishlist(item?.id);
+                      handleWishlist(item?.code);
                     }}
                   >
-                    {currentWishlistActive?.[item?.id] ? (
+                    {currentWishlistActive?.[item?.code] ? (
                       <i className="fa-solid fa-heart text-xl text-black cursor-pointer relative z-10"></i>
                     ) : (
                       <i className="fa-regular fa-heart text-xl text-black cursor-pointer relative z-10"></i>
@@ -79,7 +79,7 @@ function Exclusive({ handleWishlist, currentWishlistActive }) {
                 </div>
 
                 <h2 className="text-black w-[12rem] md:w-full overflow-hidden whitespace-nowrap text-ellipsis">
-                  {item.product_name}
+                  {item?.product_name}
                 </h2>
               </div>
 

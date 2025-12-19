@@ -11,15 +11,15 @@ import { usePoints } from "./Hook/usePoints.js";
 const ControlDataContext = createContext();
 const useDataContext = () => useContext(ControlDataContext);
 function ContextProvider({ children }) {
-  const [search, setSearch] = useState(false);
-  const [bgLoginRegister, setBgLoginRegister] = useState(false);
-  const [gotoBag, setGoToBag] = useState(false);
-  const [policy, setPolicy] = useState(false);
-  const [faqguides, setFaqGuides] = useState(false);
+  const [search, setSearch] = useState(false);//show search mobile phone
+  const [bgLoginRegister, setBgLoginRegister] = useState(false); //show background login or register
+  const [gotoBag, setGoToBag] = useState(false);//show to bags
+  const [policy, setPolicy] = useState(false);//show policy
+  const [faqguides, setFaqGuides] = useState(false);//show faqguides
   const [bgCarts, setBgCarts] = useState(false);
-  const [showDataSearch, setShowDataSearch] = useState([]);
-  const [amountPayment, setAmountPayment] = useState(null);
-  const [userAccount, setUserAccount] = useState(() => {
+  const [showDataSearch, setShowDataSearch] = useState([]); //store currentData search of macthed
+  const [amountPayment, setAmountPayment] = useState(null); // store current payments
+  const [userAccount, setUserAccount] = useState(() => { //store userAccount object in local storage
     try {
       const stored = localStorage.getItem("UserAccount");
       return stored ? JSON.parse(stored) : [];
@@ -28,7 +28,7 @@ function ContextProvider({ children }) {
     }
   });
 
-  const [currentAccount, setCurrentAccount] = useState(() => {
+  const [currentAccount, setCurrentAccount] = useState(() => {//store currentAccount object in local storage
     try {
       const stored = localStorage.getItem("storeCurrentAccount");
       return stored ? JSON.parse(stored) : [];
@@ -36,7 +36,7 @@ function ContextProvider({ children }) {
       return [];
     }
   });
-  const [counters, setCounters] = useState(() => {
+  const [counters, setCounters] = useState(() => {//store counter to update in cart
     try {
       const counter = localStorage.getItem("storeCounter");
       return counter ? JSON.parse(counter) : {};
@@ -44,7 +44,6 @@ function ContextProvider({ children }) {
       return {};
     }
   });
-  console.log(currentAccount);
   // Save userAccount changes to localStorage
   useEffect(() => {
     localStorage.setItem("UserAccount", JSON.stringify(userAccount));
@@ -77,6 +76,7 @@ function ContextProvider({ children }) {
     setBgLoginRegister,
     new_array_item,
   });
+  // Custom hook for bags processing
   const {
     showCart,
     setShowCart,
@@ -99,6 +99,7 @@ function ContextProvider({ children }) {
     setBgLoginRegister,
     new_array_item,
   });
+  //store infomation of user accounts of processing
   const {
     purchasing,
     setPurchasing,
@@ -115,6 +116,7 @@ function ContextProvider({ children }) {
     currentAccount,
     setCounters,
   });
+  //store checkouts processing
   const {
     deliveryAddress,
     setDeliveryAddress,
@@ -124,6 +126,7 @@ function ContextProvider({ children }) {
     handleBanks,
     handleContact,
   } = useCheckouts({ currentAccount, setUserAccount, userAccount });
+  // handle search processing
   const {
     handleSubmit,
     handleSearchValue,
@@ -131,6 +134,7 @@ function ContextProvider({ children }) {
     setValueSearch,
     currentValue,
   } = useSearch({ setSearch, setShowDataSearch, new_array_item });
+  // handle point processing®
   const {
     userPoints, // list of points history
     pointHistory, // newly added history inside this session

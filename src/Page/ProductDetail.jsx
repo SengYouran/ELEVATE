@@ -283,13 +283,13 @@ export default function ProductDetail() {
                 setShowRegister(true);
                 setBgLoginRegister(true);
               } else {
+                if (sizes === "") {
+                  setAlertSize(true);
+                  return;
+                }
                 setGoToBag(true);
                 setBgCarts(true);
                 handleCart(newArr?.id);
-              }
-              if (sizes === "") {
-                setAlertSize(true);
-                return;
               }
             }}
           >

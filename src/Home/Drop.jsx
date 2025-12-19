@@ -67,10 +67,10 @@ function Drop({ handleWishlist, currentWishlistActive }) {
                   </div>
                   <span
                     onClick={() => {
-                      handleWishlist(item?.id);
+                      handleWishlist(item?.code);
                     }}
                   >
-                    {currentWishlistActive?.[item?.id] ? (
+                    {currentWishlistActive?.[item?.code] ? (
                       <i className="fa-solid fa-heart text-xl text-black cursor-pointer relative z-10"></i>
                     ) : (
                       <i className="fa-regular fa-heart text-xl text-black cursor-pointer relative z-10"></i>

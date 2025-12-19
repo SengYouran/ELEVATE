@@ -3,7 +3,7 @@ import { product_Home } from "../Data/home";
 import useInViewAnimation from "../Hook/useInViewAnimation.js";
 const makeSlug = (name) => name.toLowerCase().replace(/\s+/g, "-");
 
-function Vibes({handleWishlist, currentWishlistActive}) {
+function Vibes({ handleWishlist, currentWishlistActive }) {
   const produtRefs = useInViewAnimation("active", 200);
   return (
     <div className="flex flex-col gap-2 mt-4">
@@ -29,7 +29,7 @@ function Vibes({handleWishlist, currentWishlistActive}) {
               className="fade-in"
             >
               {item.cloth_colors.map((color, index) => (
-                <Link to={`/${item?.type}/${slug}`} key={index} >
+                <Link to={`/${item?.type}/${slug}`} key={index}>
                   <img
                     src={color.product_image[1]}
                     alt="Product items"
@@ -56,12 +56,12 @@ function Vibes({handleWishlist, currentWishlistActive}) {
                       </h2>
                     ) : null}
                   </div>
-                   <span
+                  <span
                     onClick={() => {
-                      handleWishlist(item?.id);
+                      handleWishlist(item?.code);
                     }}
                   >
-                    {currentWishlistActive?.[item?.id] ? (
+                    {currentWishlistActive?.[item?.code] ? (
                       <i className="fa-solid fa-heart text-xl text-black cursor-pointer relative z-10"></i>
                     ) : (
                       <i className="fa-regular fa-heart text-xl text-black cursor-pointer relative z-10"></i>

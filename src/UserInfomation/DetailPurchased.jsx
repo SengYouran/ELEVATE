@@ -65,7 +65,7 @@ function DetailPurchased() {
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-4">
             <h2 className="text-[16px] font-medium">
-              Order on. #{detailProduct?.id}
+              Order on. #{detailProduct?.code}
             </h2>
             <span className="flex items-center gap-4 bg-green-200 px-2 py-1">
               <i className="fa-solid fa-circle text-[8px] text-green-500"></i>
@@ -96,7 +96,7 @@ function DetailPurchased() {
               <span className="flex flex-col gap-2">
                 <h2>{detailProduct?.product_name}</h2>
                 <p className="text-sm">{detailProduct?.product_text}</p>
-                <p className="text-sm">Code: {detailProduct?.id}</p>
+                <p className="text-sm">Code: {detailProduct?.code}</p>
                 <p className="text-sm">Quantity X {detailProduct?.counter}</p>
               </span>
             </div>
@@ -170,7 +170,7 @@ function DetailPurchased() {
                 </h2>
               </div>
               <div className="">
-                <h2 className="text-[15px] font-medium">{address?.province}</h2>
+                <h2 className="text-[15px] font-medium">{address?.provinces}</h2>
               </div>
               <div className="">
                 <h2 className="text-[15px] font-medium">{address?.country}</h2>

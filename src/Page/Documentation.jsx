@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { FaChevronDown, FaShippingFast, FaLock, FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -8,12 +7,14 @@ function Documentation() {
     {
       title: "Getting Started",
       icon: <FaStar className="text-yellow-500 mr-2" />,
-      content: "Learn how to create your account, navigate our store, and place your first order.",
+      content:
+        "Learn how to create your account, navigate our store, and place your first order.",
     },
     {
       title: "Product Care",
       icon: <FaStar className="text-yellow-500 mr-2" />,
-      content: "Follow our care instructions to ensure your clothing lasts longer.",
+      content:
+        "Follow our care instructions to ensure your clothing lasts longer.",
     },
     {
       title: "Size Guide",
@@ -44,7 +45,8 @@ function Documentation() {
       <div className="text-center mb-16">
         <h1 className="text-5xl font-bold mb-4 tracking-wide">Documentation</h1>
         <p className="text-gray-500 text-lg max-w-2xl mx-auto">
-          Everything you need to know about our products, care, and shopping policies.
+          Everything you need to know about our products, care, and shopping
+          policies.
         </p>
       </div>
 
@@ -107,12 +109,21 @@ function Documentation() {
           Explore our latest clothing & accessories collection.
         </p>
 
-        <Link
-          to="/shop"
-          className="px-8 py-3 bg-black text-white rounded-full hover:bg-gray-800 transition"
-        >
-          Explore Collection
-        </Link>
+        <div className="flex justify-center items-center gap-3">
+          <Link
+            to="/women-shop-by-collection"
+            className="px-8 py-3 bg-black text-white text-lg rounded-full hover:bg-gray-800 transition inline-block"
+          >
+            Explore Women Collection
+          </Link>
+
+          <Link
+            to="/men-shop-by-collection"
+            className="px-8 py-3 bg-black text-white text-lg rounded-full hover:bg-gray-800 transition inline-block"
+          >
+            Explore Men Collection
+          </Link>
+        </div>
       </div>
     </div>
   );

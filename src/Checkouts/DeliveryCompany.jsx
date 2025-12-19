@@ -1,7 +1,7 @@
 import { useState } from "react";
 import J_T from "../assets/logo/JT-Express-Logo.png";
 import VTM from "../assets/logo/vireak-buntham.png";
-import logo_shop from "../assets/logo/logo_shop.png";
+import logo_shop from "../assets/logo/Elevate_logos.png";
 import { useDataContext } from "../Context";
 const brandDelivery = [
   {
@@ -21,7 +21,7 @@ const brandDelivery = [
   {
     id: "d3",
     brand_logo: logo_shop,
-    brand_name: "Pich Pisey Bikers",
+    brand_name: "Elevate Bikers",
     price: "$1.25",
     days: "Delivery within 2-3 days.",
   },

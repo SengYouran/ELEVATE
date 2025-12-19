@@ -1,8 +1,8 @@
 function GoToBags({ newArr, gotoBag, setGoToBag, setShowCart }) {
   return (
     <div
-      className={` bg-white fixed bottom-0 left-0 w-screen transition-all duration-500 ease-in-out  flex justify-center items-center gap-4 ${
-        gotoBag ? "z-85 opacity-100 h-[20rem]" : "opacity-0 -z-50 h-10"
+      className={`bg-white fixed bottom-0 left-0 z-85 w-screen transition-all duration-500 ease-in-out  flex justify-center items-center gap-4 ${
+        gotoBag ? "opacity-100 h-[20rem]" : "opacity-0 -z-50 h-10"
       }`}
     >
       <div className=" shadow shadow-pink-200 rounded-xl">

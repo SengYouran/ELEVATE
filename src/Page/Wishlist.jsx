@@ -4,18 +4,12 @@ import { useDataContext } from "../Context";
 import useInViewAnimation from "../Hook/useInViewAnimation.js";
 const makeSlug = (name) => name.toLowerCase().replace(/\s+/g, "-");
 function Wishlist() {
-  const {
-    handleWishlist,
-    userAccount,
-    currentAccount,
-    handleCart,
-    setSize,
-    sizes,
-  } = useDataContext();
+  const { handleWishlist, userAccount, currentAccount, handleCart, setSize } =
+    useDataContext();
   const [currentWishlist, setCurrentWish] = useState([]);
   const productRefs = useInViewAnimation("active", 200, [currentWishlist]);
-  const [showSize, setShowSize] = useState(false);
-  const [currentSize, setCurrentSize] = useState(null);
+  const [showSize, setShowSize] = useState(0);
+  const [currentSize, setCurrentSize] = useState({});
   useEffect(() => {
     const userIndex = userAccount?.find(
       (check) => check?.id === currentAccount?.id
@@ -111,17 +105,17 @@ function Wishlist() {
                       className={`bg-gray-100 my-1 w-18 p-1 border cursor-pointer flex justify-center items-center gap-2`}
                       onClick={() => {
                         setSize(item?.size[0]);
-                        setShowSize(true);
+                        setShowSize(item?.id);
                       }}
                     >
                       <i className="fa-solid fa-angle-down text-sm "></i>
                       <h2 className="font-medium text-[15px]">
-                        {currentSize === null ? item?.size[0] : currentSize}
+                        {currentSize[item?.id] || item?.size[0]}
                       </h2>
                     </div>
                     <div
                       className={`container-scroll absolute bottom-0 left-18 bg-gray-100 w-14 shadow overflow-y-auto max-h-[12rem] ${
-                        showSize ? "block" : "hidden"
+                        showSize === item?.id ? "block" : "hidden"
                       }`}
                     >
                       {item?.size.map((render) => (
@@ -129,8 +123,11 @@ function Wishlist() {
                           className="border p-2 cursor-pointer"
                           onClick={() => {
                             setSize(render);
-                            setShowSize(false);
-                            setCurrentSize(render);
+                            setShowSize(0);
+                            setCurrentSize((prev) => ({
+                              ...prev,
+                              [item?.id]: render,
+                            }));
                           }}
                           key={render}
                         >
@@ -143,14 +140,14 @@ function Wishlist() {
                     <h2
                       className="bg-red-500 p-1 text-white text-[14px] cursor-pointer"
                       onClick={() => {
-                        handleWishlist(item?.id);
+                        handleWishlist(item?.code);
                       }}
                     >
                       Delete
                     </h2>
                     <h2
                       onClick={() => {
-                        handleWishlist(item?.id);
+                        handleWishlist(item?.code);
 
                         const sizeToSet = currentSize || item?.size[0];
                         if (sizeToSet) {

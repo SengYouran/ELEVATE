@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import test from "../assets/Banner/45.png";
 import test2 from "../assets/Banner/35.png";
+import { Link } from "react-router-dom";
 
 const banner = [test, test2];
 

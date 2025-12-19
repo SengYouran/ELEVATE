@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const makeSlug = (name) => name.toLowerCase().replace(/\s+/g, "-");
 import { product_Smart } from "../Data/home";
 import useInViewAnimation from "../Hook/useInViewAnimation.js";
-function Smart_Vibes({handleWishlist, currentWishlistActive}) {
+function Smart_Vibes({ handleWishlist, currentWishlistActive }) {
   const [hover, setHover] = useState({}); // <-- FIX
   const productRefs = useInViewAnimation("active", 200);
   return (
@@ -27,8 +27,11 @@ function Smart_Vibes({handleWishlist, currentWishlistActive}) {
           const firstColor = item.cloth_colors[0];
 
           return (
-            <div key={item.id} ref={(el) => (productRefs.current[index] = el)}
-            className="fade-in">
+            <div
+              key={item.id}
+              ref={(el) => (productRefs.current[index] = el)}
+              className="fade-in"
+            >
               <Link
                 to={`/${item?.type}/${slug}`}
                 onMouseEnter={() =>
@@ -62,12 +65,13 @@ function Smart_Vibes({handleWishlist, currentWishlistActive}) {
                       </h2>
                     )}
                   </div>
-                   <span
+                  <span
                     onClick={() => {
-                      handleWishlist(item?.id);
+                      
+                      handleWishlist(item?.code);
                     }}
                   >
-                    {currentWishlistActive?.[item?.id] ? (
+                    {currentWishlistActive?.[item?.code] ? (
                       <i className="fa-solid fa-heart text-xl text-black cursor-pointer relative z-10"></i>
                     ) : (
                       <i className="fa-regular fa-heart text-xl text-black cursor-pointer relative z-10"></i>
@@ -82,7 +86,10 @@ function Smart_Vibes({handleWishlist, currentWishlistActive}) {
 
               <div className="flex items-center gap-1 mt-1">
                 {item?.text_color?.map((color, index) => (
-                  <div className={`${color} border w-4 h-4 rounded-[50%]`} key={index}></div>
+                  <div
+                    className={`${color} border w-4 h-4 rounded-[50%]`}
+                    key={index}
+                  ></div>
                 ))}
               </div>
             </div>

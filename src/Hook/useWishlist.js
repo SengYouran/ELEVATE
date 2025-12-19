@@ -40,27 +40,39 @@ function useWishlist({
       setUserAccount(updateAccount);
     }
   }, [wishlistSD, wishlistActive]);
-  function handleWishlist(id) {
+  function handleWishlist(code) {
+    console.log(code);
+    if (!code) return;
+
     if (currentAccount?.id === 0) {
       setShowLogin(true);
       setShowRegister(true);
       setBgLoginRegister(true);
       return;
     }
-    const data = new_array_item.find((check) => check.id === id);
-    const toggleActive = {
-      ...wishlistActive,
-      [id]: !wishlistActive[id],
-    };
-    setWishlistActive(toggleActive);
-    const user = userAccount[userIndex];
-    const wishlist = user?.saveWishlist || [];
-    const isExit = wishlist.some((e) => e?.id === id);
-    const updateWishlist = isExit
-      ? wishlist?.filter((check) => check?.id !== id)
+
+    const userIndex = userAccount.findIndex(
+      (check) => check.id === currentAccount?.id
+    );
+    if (userIndex === -1) return;
+
+    const data = new_array_item.find((check) => check.code === code);
+
+    setWishlistActive((prev) => ({
+      ...prev,
+      [String(code)]: !prev[String(code)], // ✅ normalize key
+    }));
+
+    const wishlist = userAccount[userIndex]?.saveWishlist || [];
+    const isExist = wishlist.some((e) => e?.code === code);
+
+    const updateWishlist = isExist
+      ? wishlist.filter((check) => check?.code !== code)
       : [data, ...wishlist];
+
     setWishlistSD(updateWishlist);
   }
+
   return { handleWishlist, wishlistActive, wishlistSD };
 }
 export { useWishlist };
