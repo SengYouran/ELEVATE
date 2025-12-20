@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { useDataContext } from "../Context";
 import { useNavigate } from "react-router-dom";
+import Successful from "./Successful";
 
 function Payment() {
   const [total, setTotal] = useState(null);
   const [saveMoney, setSaveMoney] = useState(null);
+  const [showSuccess, setShowSuccess] = useState(false); // <-- add this
   const [KHRTotal, setKHRTotal] = useState(null);
   const {
     userAccount,
@@ -92,11 +94,16 @@ function Payment() {
           }
           handleSavePoint();
           handleClearBagsStorePurchased();
-          navigate("/");
+          setShowSuccess(true);
         }}
       >
         Checkout
       </button>
+      {showSuccess && (
+        <div className="fixed inset-0 z-50">
+          <Successful />
+        </div>
+      )}
     </div>
   );
 }
